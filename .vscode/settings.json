@@ -1,0 +1,17 @@
+{
+	"editor.tabSize"					:	4,
+	"editor.insertSpaces"				:	false,
+	"editor.detectIndentation"			:	false,
+	"editor.cursorSmoothCaretAnimation"	:	"on",
+	"editor.minimap.enabled"			:	false,
+	"editor.smoothScrolling"			:	true,
+	
+	"workbench.colorTheme"				:	"Default Dark+",
+	"editor.lineNumbers"				:	"on",
+	"breadcrumbs.enabled"				:	true,
+	
+	"files.autoSave"					:	"off",
+	"files.trimTrailingWhitespace"		:	false,
+	"files.insertFinalNewline"			:	true,
+	"editor.trimAutoWhitespace"			:	false,
+}
