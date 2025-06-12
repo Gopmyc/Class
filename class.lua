@@ -29,6 +29,11 @@ local function debugInfo(tSelf)
     return table.concat(tStr, "\n")
 end
 
+local function accessor(tSelf, tVarName, tName, tDefaultValue)
+    tSelf["Get" .. tName] = function(tSelf) return tSelf.__private[tVarName] end
+	tSelf["Set" .. tName] = function(tSelf, tV) tSelf.__private[tVarName] = tV ~= nil and tV or tDefaultValue end
+end
+
 local function include(tClass, tOther) return includeHelper(tClass, tOther, {}) end
 local function clone(tOther) return setmetatable(include({}, tOther), assert(getmetatable(tOther), "Cannot clone an object without a metatable.")) end
 local function super(tSelf, tMethod, ...) if tSelf.__super and tSelf.__super[tMethod] then return tSelf.__super[tMethod](tSelf, ...) else error("Method " .. tMethod .. " not found in parent class.") end end
