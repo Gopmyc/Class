@@ -92,6 +92,14 @@ return setmetatable(
             end,
         })
     end,
+
+	registerClass		=	function(self, tName, tPrototype, tParent)
+        local tCls	=	self:new{__includes = {tPrototype, tParent}}
+        if tParent then tCls.__super = tParent end
+        tCls.__type	=	tName
+        self:overloadOperators(tCls)
+        return tCls
+    end,
 },
 {
     __call	=	function(self, ...)
