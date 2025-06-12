@@ -33,6 +33,8 @@ return setmetatable(
         tSelf["Get" .. tName]	=	function(tSelf) return tSelf.__private[tVarName] end
         tSelf["Set" .. tName]	=	function(tSelf, tV) tSelf.__private[tVarName] = tV ~= nil and tV or tDefaultValue end
     end,
+
+	include		=	function(self, tClass, tOther) return self:includeHelper(tClass, tOther, {}) end,
 },
 {
     __call	=	function(self, ...)
