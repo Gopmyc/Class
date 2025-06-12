@@ -65,6 +65,16 @@ local function overloadOperators(tClass)
     end
 end
 
+local function registerClass(tName, tPrototype, tParent)
+    local tCls  =   new{__includes = {tPrototype, tParent}}
+
+    if tParent then tCls.__super = tParent end
+    tCls.__type = tName
+    overloadOperators(tCls)
+
+    return tCls
+end
+
 if class_commons ~= false and not common then common = {}; function common.class(name, prototype, parent) return new{__includes = {prototype, parent}}; end; function common.instance(class, ...) return class(...); end end
 
 return setmetatable(
