@@ -54,6 +54,44 @@ return setmetatable(
             return setmetatable(tResult, { __type = tA.__type, __privateMethods = tResult.__privateMethods or {} })
         end
     end,
+
+	new			=	function(self, tClass)
+        tClass		=	tClass or {}
+        local tInc	=	getmetatable(tClass.__includes) and {tClass.__includes} or tClass.__includes or {}
+
+        for _, tOther in ipairs(tInc) do if type(tOther) == "string" then tOther = _G[tOther] end; self:include(tClass, tOther) end
+
+        tClass.__index			=	tClass
+        tClass.__super			=	tClass.__super or nil
+        tClass.__type			=	tClass.__type or "Class"
+        tClass.__privateMethods	=	tClass.__privateMethods or {}
+
+        local tMethodsToHide	=	{
+            init		=	tClass.init    or tClass[1] or function() end,
+            include		=	tClass.include or function(...) return self:include(...) end,
+            clone		=	tClass.clone   or function(...) return self:clone(...) end,
+            DebugInfos	=	tClass.__privateMethods.DebugInfos or function(...) return self:debugInfo(...) end,
+        }
+
+        for sKey, vValue in pairs(tMethodsToHide) do if vValue then tClass.__privateMethods[sKey] = vValue tClass[sKey] = nil end end
+
+        return setmetatable(tClass, {
+            __call	=	function(tC, ...)
+                local tO			=	setmetatable({}, tC)
+                tO.__private		=	{}
+                tO.__type			=	tC.__type
+                tO.__privateMethods	=	tC.__privateMethods
+                assert(xpcall(function(...) tO:init(...) end, function(tErr) return "Init Error: " .. tErr end, ...))
+                return tO
+            end,
+            __gc	=	function(tO) if tO.destroy then pcall(function() tO:destroy() end) else tO = nil end end,
+            __index	=	function(tSelf, tKey)
+                if tKey == "__privateMethods" then return nil end
+                if tSelf.__privateMethods[tKey] then return function() return tSelf.__privateMethods[tKey](tSelf) end end
+                return rawget(tSelf, tKey)
+            end,
+        })
+    end,
 },
 {
     __call	=	function(self, ...)
