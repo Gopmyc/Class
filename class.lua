@@ -112,11 +112,14 @@ if class_commons ~= false and not common then common = {}; function common.class
 
 return setmetatable(
 	{
-		new		=	new,
-		include	=	include,
-		clone	=	clone
-	},
+    	new					=	new,
+        include             =	include,
+        clone               =	clone,
+        super               =	super,
+        registerAccessor    =	accessor,
+        registerClass       =	registerClass,
+    },
 	{
-		__call	=	function(_,...) return new(...) end
+		__call = function(_, ...) return new(...) end
 	}
 )
