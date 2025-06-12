@@ -40,6 +40,20 @@ return setmetatable(
 	super		=	function(self, tSelf, tMethod, ...)
         if tSelf.__super and tSelf.__super[tMethod] then return tSelf.__super[tMethod](tSelf, ...) else error("Method " .. tMethod .. " not found in parent class.") end
     end,
+
+	overloadOperators	=	function(self, tClass)
+        assert(type(tClass) == "table", "[CLASS] ...")
+        tClass.__add	=	function(tA, tB)
+            assert(tA.__type == tClass.__type, "[CLASS] Attempted to add incompatible types: " .. tA.__type .. " and " .. tB.__type)
+            assert(tB.__type == tClass.__type, "[CLASS] Attempted to add incompatible types: " .. tA.__type .. " and " .. tB.__type)
+            local tResult	=	{}
+            for tKey, tValue in pairs(tA.__private) do tResult[tKey] = tValue end
+            for tKey, tValue in pairs(tB.__private) do tResult[tKey] = tResult[tKey] or tValue end
+            for tKey, tValue in pairs(tA.__privateMethods) do tResult[tKey] = tValue end
+            for tKey, tValue in pairs(tB.__privateMethods) do tResult[tKey] = tResult[tKey] or tValue end
+            return setmetatable(tResult, { __type = tA.__type, __privateMethods = tResult.__privateMethods or {} })
+        end
+    end,
 },
 {
     __call	=	function(self, ...)
