@@ -6,11 +6,8 @@ local function include_helper(to, from, seen)
 	return to
 end
 
-local function include(class, other) return include_helper(class, other, {}) end
-
-local function clone(other)
-	return setmetatable(include({}, other), getmetatable(other))
-end
+local function include(class, other) return include_helper(class, other, {}); end
+local function clone(other) return setmetatable(include({}, other), getmetatable(other)); end
 
 local function new(class)
 	class = class or {}
