@@ -26,5 +26,13 @@ end
 
 if class_commons ~= false and not common then common = {}; function common.class(name, prototype, parent) return new{__includes = {prototype, parent}}; end; function common.instance(class, ...) return class(...); end end
 
-return setmetatable({new = new, include = include, clone = clone},
-	{__call = function(_,...) return new(...) end})
+return setmetatable(
+	{
+		new		=	new,
+		include	=	include,
+		clone	=	clone
+	},
+	{
+		__call	=	function(_,...) return new(...) end
+	}
+)
