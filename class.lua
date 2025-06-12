@@ -9,7 +9,7 @@ local function includeHelper(tClass, tOther, tSeen)
     return tClass
 end  
 
-local function include(class, other) return include_helper(class, other, {}); end
+local function include(tClass, tOther) return includeHelper(tClass, tOther, {}) end
 local function clone(other) return setmetatable(include({}, other), getmetatable(other)); end
 
 local function new(class)
