@@ -31,6 +31,7 @@ end
 
 local function include(tClass, tOther) return includeHelper(tClass, tOther, {}) end
 local function clone(tOther) return setmetatable(include({}, tOther), assert(getmetatable(tOther), "Cannot clone an object without a metatable.")) end
+local function super(tSelf, tMethod, ...) if tSelf.__super and tSelf.__super[tMethod] then return tSelf.__super[tMethod](tSelf, ...) else error("Method " .. tMethod .. " not found in parent class.") end end
 
 local function new(class)
 	class		=	class or {}
