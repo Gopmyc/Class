@@ -10,7 +10,7 @@ local function includeHelper(tClass, tOther, tSeen)
 end  
 
 local function include(tClass, tOther) return includeHelper(tClass, tOther, {}) end
-local function clone(other) return setmetatable(include({}, other), getmetatable(other)); end
+local function clone(tOther) return setmetatable(include({}, tOther), assert(getmetatable(tOther), "Cannot clone an object without a metatable.")) end
 
 local function new(class)
 	class		=	class or {}
