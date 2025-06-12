@@ -20,7 +20,7 @@ local function debugInfo(tSelf)
         "\nType: " .. (tMt.__type or "Unknown"),
         "\n# Private Data:",
     }
-	
+
     table.insert(tStr, (tMt.__private and table.concat({table.unpack(tMt.__private, function(k, v) return string.format("  - %s = %s", k, tostring(v)) end)}, "\n") or "  (empty)"))
     table.insert(tStr, "\n# Methods:")
     table.insert(tStr, table.concat((function() local methods = {} for k, v in pairs(tMt) do if type(v) == "function" then table.insert(methods, string.format("  - %s type : %s", k, type(v))) end end return methods end)(), "\n"))
@@ -45,6 +45,24 @@ local function new(class)
 	class.clone		=	class.clone   or clone
 
 	return setmetatable(class, {__call = function(c, ...) local o = setmetatable({}, c) o:init(...) return o end})
+end
+
+local function overloadOperators(tClass)
+    assert(type(tClass) == "table", "[CLASS] ...")
+    tClass.__add = function(tA, tB)
+        assert(tA.__type == tClass.__type, "[CLASS] Attempted to add incompatible types: " .. tA.__type .. " and " .. tB.__type)
+        assert(tB.__type == tClass.__type, "[CLASS] Attempted to add incompatible types: " .. tA.__type .. " and " .. tB.__type)
+    
+        local tResult = {}
+    
+        for tKey, tValue in pairs(tA.__private) do tResult[tKey] = tValue end
+        for tKey, tValue in pairs(tB.__private) do tResult[tKey] = tResult[tKey] or tValue end
+    
+        for tKey, tValue in pairs(tA.__privateMethods) do tResult[tKey] = tValue end
+        for tKey, tValue in pairs(tB.__privateMethods) do tResult[tKey] = tResult[tKey] or tValue end
+    
+        return setmetatable(tResult, { __type = tA.__type, __privateMethods = tResult.__privateMethods or {} })
+    end
 end
 
 if class_commons ~= false and not common then common = {}; function common.class(name, prototype, parent) return new{__includes = {prototype, parent}}; end; function common.instance(class, ...) return class(...); end end
