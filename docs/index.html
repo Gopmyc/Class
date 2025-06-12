@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+  		<meta charset="UTF-8">
+  		<title>Class documentation</title>
+  		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+		<header>
+			<h1>Class documentation</h1>
+			<nav>
+    			<a href="#presentation">Presentation</a>
+    	 		<a href="#api">API</a>
+    		</nav>
+		</header>
+		<main>
+			<section id="presentation">
+    			<h2>Presentation</h2>
+				<p>
+					...
+    			</p>
+			</section>
+			<section id="exemple">
+    			<h2>Exemple d'utilisation</h2>
+				<pre><code>
+local MyClass = Class:registerClass("MyClass", {
+  init = function(self)
+    self.__private.value = 42
+  end
+})
+local obj = MyClass()
+print(obj:DebugInfos())
+				</code></pre>
+    		</section>
+    		<section id="api">
+    	  		<h2>API</h2>
+    	  		<ul>
+    	    		<li><strong>includeHelper</strong> : Fusionne des tables de classes.</li>
+    	    		<li><strong>debugInfo</strong> : Affiche les infos de debug d'un objet.</li>
+    	    		<li><strong>accessor</strong> : Génère des getters/setters.</li>
+    	    		<li><strong>include</strong> : Inclut une classe dans une autre.</li>
+    	    		<li><strong>clone</strong> : Clone un objet.</li>
+    	    		<li><strong>super</strong> : Appelle une méthode parente.</li>
+    	    		<li><strong>overloadOperators</strong> : Surcharge les opérateurs.</li>
+    	    		<li><strong>new</strong> : Instancie une classe.</li>
+    	    		<li><strong>registerClass</strong> : Enregistre une nouvelle classe.</li>
+    	  		</ul>
+    		</section>
+  		</main>
+  		<footer>
+			<p>© 2025 - Class Documentation</p>
+		</footer>
+	</body>
+</html>
