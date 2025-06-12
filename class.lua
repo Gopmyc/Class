@@ -20,3 +20,7 @@ end
 local function include(class, other)
 	return include_helper(class, other, {})
 end
+
+local function clone(other)
+	return setmetatable(include({}, other), getmetatable(other))
+end
