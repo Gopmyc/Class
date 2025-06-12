@@ -36,6 +36,10 @@ return setmetatable(
 
 	include		=	function(self, tClass, tOther) return self:includeHelper(tClass, tOther, {}) end,
 	clone		=	function(self, tOther) return setmetatable(self:include({}, tOther), assert(getmetatable(tOther), "Cannot clone an object without a metatable.")) end,
+
+	super		=	function(self, tSelf, tMethod, ...)
+        if tSelf.__super and tSelf.__super[tMethod] then return tSelf.__super[tMethod](tSelf, ...) else error("Method " .. tMethod .. " not found in parent class.") end
+    end,
 },
 {
     __call	=	function(self, ...)
