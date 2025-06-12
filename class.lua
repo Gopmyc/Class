@@ -16,3 +16,7 @@ local function include_helper(to, from, seen)
 	end
 	return to
 end
+
+local function include(class, other)
+	return include_helper(class, other, {})
+end
