@@ -7,7 +7,27 @@ local function includeHelper(tClass, tOther, tSeen)
     for k, v in pairs(tOther) do if not tSeen[k] then tClass[k] = includeHelper({}, v, tSeen) end end
 
     return tClass
-end  
+end
+
+local function debugInfo(tSelf)
+    local tMt = type(tSelf) == "userdata" and getmetatable(tSelf) or tSelf
+    assert(tMt, "Object has no metatable!")
+
+    local tStr = {
+        "==========================",
+        "=== DEBUG OBJECT INFO ===",
+        "==========================",
+        "\nType: " .. (tMt.__type or "Unknown"),
+        "\n# Private Data:",
+    }
+	
+    table.insert(tStr, (tMt.__private and table.concat({table.unpack(tMt.__private, function(k, v) return string.format("  - %s = %s", k, tostring(v)) end)}, "\n") or "  (empty)"))
+    table.insert(tStr, "\n# Methods:")
+    table.insert(tStr, table.concat((function() local methods = {} for k, v in pairs(tMt) do if type(v) == "function" then table.insert(methods, string.format("  - %s type : %s", k, type(v))) end end return methods end)(), "\n"))
+
+    table.insert(tStr, "\n==========================")
+    return table.concat(tStr, "\n")
+end
 
 local function include(tClass, tOther) return includeHelper(tClass, tOther, {}) end
 local function clone(tOther) return setmetatable(include({}, tOther), assert(getmetatable(tOther), "Cannot clone an object without a metatable.")) end
