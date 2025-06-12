@@ -28,6 +28,11 @@ return setmetatable(
 		
         return table.concat(tStr, "\n")
     end,
+
+	accessor	=	function(self, tSelf, tVarName, tName, tDefaultValue)
+        tSelf["Get" .. tName]	=	function(tSelf) return tSelf.__private[tVarName] end
+        tSelf["Set" .. tName]	=	function(tSelf, tV) tSelf.__private[tVarName] = tV ~= nil and tV or tDefaultValue end
+    end,
 },
 {
     __call	=	function(self, ...)
