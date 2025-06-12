@@ -33,19 +33,46 @@ local function include(tClass, tOther) return includeHelper(tClass, tOther, {}) 
 local function clone(tOther) return setmetatable(include({}, tOther), assert(getmetatable(tOther), "Cannot clone an object without a metatable.")) end
 local function super(tSelf, tMethod, ...) if tSelf.__super and tSelf.__super[tMethod] then return tSelf.__super[tMethod](tSelf, ...) else error("Method " .. tMethod .. " not found in parent class.") end end
 
-local function new(class)
-	class		=	class or {}
-	local inc	=	class.__includes or {}
-	if getmetatable(inc) then inc = {inc}; end
+local function new(tClass)
+    tClass                  =   tClass or {}
+    local tInc              =   getmetatable(tClass.__includes) and {tClass.__includes} or tClass.__includes or {}
 
-	for _, other in ipairs(inc) do if type(other) == "string" then other = _G[other]; end; include(class, other); end
+    for _, tOther in ipairs(tInc) do if type(tOther) == "string" then tOther = _G[tOther] end include(tClass, tOther) end
 
-	class.__index	=	class
-	class.init		=	class.init    or class[1] or function() end
-	class.include	=	class.include or include
-	class.clone		=	class.clone   or clone
+    tClass.__index          =   tClass
+    tClass.__super          =   tClass.__super or nil
+    tClass.__type           =   tClass.__type or "Class"
 
-	return setmetatable(class, {__call = function(c, ...) local o = setmetatable({}, c) o:init(...) return o end})
+    tClass.__privateMethods =   tClass.__privateMethods or {}
+
+    local tMethodsToHide    =   {
+        init        =   tClass.init    or tClass[1] or function() end,
+        include     =   tClass.include or include,
+        clone       =   tClass.clone   or clone,
+        DebugInfos  =   tClass.__privateMethods.DebugInfos or debugInfo,
+    }
+
+    for k, v in pairs(tMethodsToHide) do if v then tClass.__privateMethods[k] = v tClass[k] = nil end end
+
+    return setmetatable(tClass, {
+        __call = function(tC, ...)
+            local tO = setmetatable({}, tC)
+
+            tO.__private        =   {}
+            tO.__type           =   tC.__type
+            tO.__privateMethods =   tC.__privateMethods
+
+            assert(xpcall(function(...) tO:init(...) end, function(tErr) return "Init Error: " .. tErr end, ...))
+
+            return tO
+        end,
+        __gc = function(tO) if tO.destroy then pcall(function() tO:destroy() end) end end,
+            __index = function(tSelf, tKey)
+            if tKey == "__privateMethods" then return nil end
+            if tSelf.__privateMethods[tKey] then return function() return tSelf.__privateMethods[tKey](tSelf) end end
+            return rawget(tSelf, tKey)
+        end,
+    })
 end
 
 local function overloadOperators(tClass)
