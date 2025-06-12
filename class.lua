@@ -35,6 +35,7 @@ return setmetatable(
     end,
 
 	include		=	function(self, tClass, tOther) return self:includeHelper(tClass, tOther, {}) end,
+	clone		=	function(self, tOther) return setmetatable(self:include({}, tOther), assert(getmetatable(tOther), "Cannot clone an object without a metatable.")) end,
 },
 {
     __call	=	function(self, ...)
