@@ -87,3 +87,31 @@ body					{
 	box-shadow				:	0 0 20px rgba(155, 93, 229, 0.1);
 	border-radius			:	16px;
 }
+
+h1, h2, h3				{
+	color					:	#9b5de5;
+	margin-top				:	1.5em;
+}
+
+h2						{
+	position				:	relative;
+	padding-left			:	16px;
+}
+
+h2::before				{
+	content					:	"";
+	position				:	absolute;
+	left					:	0;
+	top						:	4px;
+	bottom					:	4px;
+	width					:	4px;
+	background				:	linear-gradient(to bottom, #9b5de5, #f15bb5);
+	border-radius			:	2px;
+	transition				:	height 0.3s ease;
+}
+
+h2::after				{
+	content					:	" 🔍";
+	color					:	#9b5de5;
+	font-size				:	0.8em;
+}
