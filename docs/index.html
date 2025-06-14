@@ -185,6 +185,34 @@ print(B.foo) -- bar
 				</div>
 			</section>
 			
+			<section id="DebugInfos">
+				<h2>DebugInfos</h2>
+				<p>
+					Prints the internal details of an instance: type, private members, methods.
+				</p>
+				<ul class="meta">
+					<li><strong>Arguments :</strong></li>
+					<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>tSelf</i> — The instance whose internals will be printed</li>
+				
+					<li><strong>Returns :</strong></li>
+					<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>string</i> — Formatted debug information</li>
+				
+					<li><strong>Exceptions :</strong></li>
+					<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>None</i></li>
+				</ul>
+
+				<div class="code-block">
+					<button class="copy-btn">📋</button>
+					<pre><code>
+local A		=	Class{
+	foo	=	function() end
+}
+local obj	=	A()
+print(obj:DebugInfos())
+					</code></pre>
+				</div>
+			</section>
+			
 		</main>
 	</div>
 </html>
