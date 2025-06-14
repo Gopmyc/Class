@@ -19,7 +19,10 @@
   <p align="center">
 	A lightweight, flexible, and extensible object-oriented programming (OOP) system for Lua.
 	Provides class creation, inheritance, encapsulation, operator overloading, and utility helpers — all in a single file.
-	Designed for seamless integration in any Lua project, with support for private members, super calls, and robust debugging tools.
+	Designed for seamless integration in any Lua project, with support for private members, super calls, and robust debugging tools. Inspired by :
+	<br />
+	<a href="https://github.com/vrld/hump/blob/master/class.lua"><strong>Hump.Class</strong></a>
+	<br />
 	<br />
 	<a href="https://gopmyc.github.io/Class/"><strong>Explore the docs »</strong></a>
 	<br />
