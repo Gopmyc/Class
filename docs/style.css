@@ -204,3 +204,31 @@ hr						{
 .copy-btn.copied		{
 	color				:	#4caf50;
 }
+
+.meta					{
+	list-style			:	none;
+	padding-left		:	0;
+	background-color	:	#1a1a1a;
+	border-left			:	4px solid #9b5de5;
+	padding				:	10px 15px;
+	margin				:	20px 0;
+	color				:	#ddd;
+	font-size			:	0.95em;
+}
+
+.meta li				{
+	margin-bottom		:	8px;
+	padding-left		:	20px;
+	transition			:	background-color 0.25s ease;
+	border-radius		:	3px;
+}
+
+.meta li:hover {
+	background-color	:	#2a2a2a;
+}
+
+.meta > li > strong		{
+	padding-left		:	0;
+	margin-bottom		:	6px;
+	display				:	inline-block;
+}
