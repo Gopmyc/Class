@@ -123,6 +123,38 @@ local obj	=	A() -- Prints "Object initialized!"
 				</div>
 			</section>
 			
+			<section id="include">
+				<h2>include</h2>
+				<p>
+					Recursively merges two classes (or tables) by copying their members.<br />
+					It respects metatables.
+				</p>
+				<ul class="meta">
+					<li><strong>Arguments :</strong></li>
+					<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>tBase</i> — The base class or table to include into</li>
+					<li>&nbsp;&nbsp;&nbsp;&nbsp;[2] : <i>tSource</i> — The class or table to merge from</li>
+				
+					<li><strong>Returns :</strong></li>
+					<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>tBase</i> — The merged class</li>
+				
+					<li><strong>Exceptions :</strong></li>
+					<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>Throws if tBase or tSource are not tables</i></li>
+				</ul>
+
+				<div class="code-block">
+					<button class="copy-btn">📋</button>
+						<pre><code>
+local Mixin	=	{
+	say	=	function() print("Hello") end
+}
+
+local A		=	Class{}
+A			=	Class:include(A, Mixin)
+A.say() -- Hello
+					</code></pre>
+				</div>
+			</section>
+			
 		</main>
 	</div>
 </html>
