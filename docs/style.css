@@ -1,0 +1,7 @@
+body					{
+	margin					:	0;
+	font-family				:	'Inter', sans-serif;
+	background-color		:	#111;
+	color					:	#eee;
+	background				:	linear-gradient(to right, #0f0f0f, #1c1c1c);
+}
