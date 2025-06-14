@@ -1,149 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta
-		charset	=	"UTF-8"
-	/>
-	<meta
-		name	=	"viewport"
-		content	=	"width=device-width, initial-scale=1.0"
-	/>
-	<title>
-		Documentation - Class
-	</title>
-	<link
-		rel		=	"stylesheet"
-		href	=	"style.css"
-	/>
-	<link
-		href	=	"https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
-		rel		=	"stylesheet"
-	>
-</head>
-<body>
-	<header>
-		<h1>Documentation - Class</h1>
-	</header>
-	<main>
-		<section>
-			<h2>Introduction</h2>
-			<p>Welcome to the documentation for the Class project. This project aims to provide a comprehensive understanding of the Class structure and its components.</p>
-		</section>
-		<section>
-			<h2>Getting Started</h2>
-			<p>To get started with the Class project, follow the installation instructions provided in the README file.</p>
-		</section>
-	</main>
-	<footer>
-		<p>&copy; 2023 Class Documentation</p>
-	</footer>
-</body>
-	<div class="container">
-		<aside class="sidebar">
-			<h2>📘 Class</h2>
-			<nav>
-				<ul>
-					<li><a href="#intro">Introduction</a></li>
-					<li><a href="#installation">Installation</a></li>
-					<li>
-						<button class="dropdown-toggle">Functions ▾</button>
-						<ul class="submenu">
-							<li><a href="#init">init</a></li>
-							<li><a href="#include">include</a></li>
-							<li><a href="#clone">clone</a></li>
-							<li><a href="#DebugInfos">DebugInfos</a></li>
-							<li><a href="#accessor">accessor</a></li>
-							<li><a href="#overloadOperators">overloadOperators</a></li>
-							<li><a href="#new">new</a></li>
-							<li><a href="#registerClass">registerClass</a></li>
-						</ul>
-						
-						<button class="dropdown-toggle">Comportement ▾</button>
-						<ul class="submenu">
-							<li><a href="#__includes">__includes</a></li>
-							<li><a href="#__type">__type</a></li>
-							<li><a href="#_gc">_gc</a></li>
-						</ul>
-					</li>
-					<li><a href="#licence">License</a></li>
-				</ul>
-			</nav>
-		</aside>
-		
-		<main class="content">
-			<section id="intro">
-				<hr />
-				<h1>Introduction</h1>
-				<p >
-					A lightweight, flexible, and extensible object-oriented programming (OOP) system for Lua.<br />
-					It provides class creation, inheritance, encapsulation, operator overloading, and utility helpers, all in a single file.<br />
-					Designed for seamless integration into any Lua project, with support for private members and advanced debugging tools.
-				</p>
-				<hr />
-			</section>
+	<head>
+		<meta
+			charset	=	"UTF-8"
+		/>
+		<meta
+			name	=	"viewport"
+			content	=	"width=device-width, initial-scale=1.0"
+		/>
+		<title>
+			Documentation - Class
+		</title>
+		<link
+			rel		=	"stylesheet"
+			href	=	"style.css"
+		/>
+		<link
+			href	=	"https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+			rel		=	"stylesheet"
+		>
+	</head>
+	<body>
+		<div class="container">
+			<aside class="sidebar">
+				<h2>📘 Class</h2>
+				<nav>
+					<ul>
+						<li><a href="#intro">Introduction</a></li>
+						<li><a href="#installation">Installation</a></li>
+						<li>
+							<button class="dropdown-toggle">Functions ▾</button>
+							<ul class="submenu">
+								<li><a href="#init">init</a></li>
+								<li><a href="#include">include</a></li>
+								<li><a href="#clone">clone</a></li>
+								<li><a href="#DebugInfos">DebugInfos</a></li>
+								<li><a href="#accessor">accessor</a></li>
+								<li><a href="#overloadOperators">overloadOperators</a></li>
+								<li><a href="#new">new</a></li>
+								<li><a href="#registerClass">registerClass</a></li>
+							</ul>
+							
+							<button class="dropdown-toggle">Comportement ▾</button>
+							<ul class="submenu">
+								<li><a href="#__includes">__includes</a></li>
+								<li><a href="#__type">__type</a></li>
+								<li><a href="#_gc">_gc</a></li>
+							</ul>
+						</li>
+						<li><a href="#licence">License</a></li>
+					</ul>
+				</nav>
+			</aside>
 			
-			<section id="installation">
-				<h1>Installation</h1>
-				<div class="code-block">
-					<button class="copy-btn">📋</button>
-					<pre><code>
+			<main class="content">
+				<section id="intro">
+					<hr />
+					<h1>Introduction</h1>
+					<p >
+						A lightweight, flexible, and extensible object-oriented programming (OOP) system for Lua.<br />
+						It provides class creation, inheritance, encapsulation, operator overloading, and utility helpers, all in a single file.<br />
+						Designed for seamless integration into any Lua project, with support for private members and advanced debugging tools.
+					</p>
+					<hr />
+				</section>
+				
+				<section id="installation">
+					<h1>Installation</h1>
+					<div class="code-block">
+						<button class="copy-btn">📋</button>
+						<pre><code>
 local Class	=	require("class")
-					</code></pre>
-				</div>
-			</section>
-			
-			<section id="init">
-				<h2>init</h2>
-				<p>
-					Initialization function automatically called when creating an object via 'Class()'.<br />
-					Defined inside the table passed to the constructor.
-				</p>
-				<ul class="meta">
-					<li><strong>Arguments :</strong></li>
-					<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>tSelf</i> — The instance being initialized</li>
-					<li>&nbsp;&nbsp;&nbsp;&nbsp;[2] : <i>...</i> — Additional arguments passed during instantiation</li>
+						</code></pre>
+					</div>
+				</section>
 				
-					<li><strong>Returns :</strong></li>
-					<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>nil</i></li>
+				<section id="init">
+					<h2>init</h2>
+					<p>
+						Initialization function automatically called when creating an object via 'Class()'.<br />
+						Defined inside the table passed to the constructor.
+					</p>
+					<ul class="meta">
+						<li><strong>Arguments :</strong></li>
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>tSelf</i> — The instance being initialized</li>
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;[2] : <i>...</i> — Additional arguments passed during instantiation</li>
+					
+						<li><strong>Returns :</strong></li>
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>nil</i></li>
+					
+						<li><strong>Exceptions :</strong></li>
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>Throws an error wrapped via xpcall if init fails</i></li>
+					</ul>
 				
-					<li><strong>Exceptions :</strong></li>
-					<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>Throws an error wrapped via xpcall if init fails</i></li>
-				</ul>
-
-				<div class="code-block">
-					<button class="copy-btn">📋</button>
-					<pre><code>
+					<div class="code-block">
+						<button class="copy-btn">📋</button>
+						<pre><code>
 local A		=	Class{
 	init	=	function(self)
 		print("Object initialized!")
 	end,
 }
 local obj	=	A() -- Prints "Object initialized!"
-					</code></pre>
-				</div>
-			</section>
-			
-			<section id="include">
-				<h2>include</h2>
-				<p>
-					Recursively merges two classes (or tables) by copying their members.<br />
-					It respects metatables.
-				</p>
-				<ul class="meta">
-					<li><strong>Arguments :</strong></li>
-					<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>tBase</i> — The base class or table to include into</li>
-					<li>&nbsp;&nbsp;&nbsp;&nbsp;[2] : <i>tSource</i> — The class or table to merge from</li>
+						</code></pre>
+					</div>
+				</section>
 				
-					<li><strong>Returns :</strong></li>
-					<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>tBase</i> — The merged class</li>
+				<section id="include">
+					<h2>include</h2>
+					<p>
+						Recursively merges two classes (or tables) by copying their members.<br />
+						It respects metatables.
+					</p>
+					<ul class="meta">
+						<li><strong>Arguments :</strong></li>
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>tBase</i> — The base class or table to include into</li>
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;[2] : <i>tSource</i> — The class or table to merge from</li>
+					
+						<li><strong>Returns :</strong></li>
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>tBase</i> — The merged class</li>
+					
+						<li><strong>Exceptions :</strong></li>
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>Throws if tBase or tSource are not tables</i></li>
+					</ul>
 				
-					<li><strong>Exceptions :</strong></li>
-					<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>Throws if tBase or tSource are not tables</i></li>
-				</ul>
-
-				<div class="code-block">
-					<button class="copy-btn">📋</button>
-						<pre><code>
+					<div class="code-block">
+						<button class="copy-btn">📋</button>
+							<pre><code>
 local Mixin	=	{
 	say	=	function() print("Hello") end
 }
@@ -151,90 +134,90 @@ local Mixin	=	{
 local A		=	Class{}
 A			=	Class:include(A, Mixin)
 A.say() -- Hello
-					</code></pre>
-				</div>
-			</section>
-			
-			<section id="clone">
-				<h2>clone</h2>
-				<p>
-					Creates a deep copy of a class or instance, preserving its metatable.
-				</p>
-				<ul class="meta">
-					<li><strong>Arguments :</strong></li>
-					<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>tObject</i> — The class or instance to clone</li>
+						</code></pre>
+					</div>
+				</section>
 				
-					<li><strong>Returns :</strong></li>
-					<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>tCloned</i> — A deep copy of the input</li>
+				<section id="clone">
+					<h2>clone</h2>
+					<p>
+						Creates a deep copy of a class or instance, preserving its metatable.
+					</p>
+					<ul class="meta">
+						<li><strong>Arguments :</strong></li>
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>tObject</i> — The class or instance to clone</li>
+					
+						<li><strong>Returns :</strong></li>
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>tCloned</i> — A deep copy of the input</li>
+					
+						<li><strong>Exceptions :</strong></li>
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>Throws if the object cannot be cloned</i></li>
+					</ul>
 				
-					<li><strong>Exceptions :</strong></li>
-					<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>Throws if the object cannot be cloned</i></li>
-				</ul>
-
-
-				<div class="code-block">
-					<button class="copy-btn">📋</button>
-					<pre><code>
+				
+					<div class="code-block">
+						<button class="copy-btn">📋</button>
+						<pre><code>
 local A	=	Class{
 	foo	=	"bar"
 }
 
 local B	=	Class:clone(A)
 print(B.foo) -- bar
-					</code></pre>
-				</div>
-			</section>
-			
-			<section id="DebugInfos">
-				<h2>DebugInfos</h2>
-				<p>
-					Prints the internal details of an instance: type, private members, methods.
-				</p>
-				<ul class="meta">
-					<li><strong>Arguments :</strong></li>
-					<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>tSelf</i> — The instance whose internals will be printed</li>
+						</code></pre>
+					</div>
+				</section>
 				
-					<li><strong>Returns :</strong></li>
-					<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>string</i> — Formatted debug information</li>
+				<section id="DebugInfos">
+					<h2>DebugInfos</h2>
+					<p>
+						Prints the internal details of an instance: type, private members, methods.
+					</p>
+					<ul class="meta">
+						<li><strong>Arguments :</strong></li>
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>tSelf</i> — The instance whose internals will be printed</li>
+					
+						<li><strong>Returns :</strong></li>
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>string</i> — Formatted debug information</li>
+					
+						<li><strong>Exceptions :</strong></li>
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>None</i></li>
+					</ul>
 				
-					<li><strong>Exceptions :</strong></li>
-					<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>None</i></li>
-				</ul>
-
-				<div class="code-block">
-					<button class="copy-btn">📋</button>
-					<pre><code>
+					<div class="code-block">
+						<button class="copy-btn">📋</button>
+						<pre><code>
 local A		=	Class{
 	foo	=	function() end
 }
 local obj	=	A()
 print(obj:DebugInfos())
-					</code></pre>
-				</div>
-			</section>
-			
-			<section id="accessor">
-				<h2>accessor</h2>
-				<p>
-					Generates getter and setter functions for a private member.
-				</p>
-				<ul class="meta">
-					<li><strong>Arguments :</strong></li>
-					<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>tSelf</i> — The instance to add accessors to</li>
-					<li>&nbsp;&nbsp;&nbsp;&nbsp;[2] : <i>sInternal</i> — Name of the private key</li>
-					<li>&nbsp;&nbsp;&nbsp;&nbsp;[3] : <i>sExternal</i> — Public-facing name (used in getter/setter)</li>
-					<li>&nbsp;&nbsp;&nbsp;&nbsp;[4] : <i>vDefault</i> — (Optional) Default value to assign</li>
+						</code></pre>
+					</div>
+				</section>
 				
-					<li><strong>Returns :</strong></li>
-					<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>nil</i></li>
+				<section id="accessor">
+					<h2>accessor</h2>
+					<p>
+						Generates getter and setter functions for a private member.
+					</p>
+					<ul class="meta">
+						<li><strong>Arguments :</strong></li>
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>tSelf</i> — The instance to add accessors to</li>
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;[2] : <i>sInternal</i> — Name of the private key</li>
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;[3] : <i>sExternal</i> — Public-facing name (used in getter/setter)</li>
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;[4] : <i>vDefault</i> — (Optional) Default value to assign</li>
+					
+						<li><strong>Returns :</strong></li>
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>nil</i></li>
+					
+						<li><strong>Exceptions :</strong></li>
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>Throws if parameters are missing or invalid</i></li>
+					</ul>
 				
-					<li><strong>Exceptions :</strong></li>
-					<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>Throws if parameters are missing or invalid</i></li>
-				</ul>
-
-				<div class="code-block">
-					<button class="copy-btn">📋</button>
-					<pre><code>
+					<div class="code-block">
+						<button class="copy-btn">📋</button>
+						<pre><code>
 local A		=	Class{
 	init	=	function(self)
 		Class:accessor(self, "sName", "Name", "John")
@@ -243,30 +226,30 @@ local A		=	Class{
 local a		=	A()
 a:SetName("Doe")
 print(a:GetName()) -- Doe
-					</code></pre>
-				</div>
-			</section>
-			
-			<section id="overloadOperators">
-				<h2>overloadOperators</h2>
-				<p>
-					Overloads the operator to merge two instances of the same type.
-				</p>
-				<ul class="meta">
-					<li><strong>Arguments :</strong></li>
-					<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>tClass</i> — The class to extend with operator overloading</li>
+						</code></pre>
+					</div>
+				</section>
 				
-					<li><strong>Returns :</strong></li>
-					<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>nil</i></li>
+				<section id="overloadOperators">
+					<h2>overloadOperators</h2>
+					<p>
+						Overloads the operator to merge two instances of the same type.
+					</p>
+					<ul class="meta">
+						<li><strong>Arguments :</strong></li>
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>tClass</i> — The class to extend with operator overloading</li>
+					
+						<li><strong>Returns :</strong></li>
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>nil</i></li>
+					
+						<li><strong>Exceptions :</strong></li>
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>Throws if tClass is not a valid class</i></li>
+					</ul>
 				
-					<li><strong>Exceptions :</strong></li>
-					<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>Throws if tClass is not a valid class</i></li>
-				</ul>
-
-
-				<div class="code-block">
-					<button class="copy-btn">📋</button>
-					<pre><code>
+				
+					<div class="code-block">
+						<button class="copy-btn">📋</button>
+						<pre><code>
 local A	=	Class{
 	init	=	function(self)
 		self.__private.value	=	42
@@ -278,30 +261,30 @@ Class:overloadOperators(A)
 local a1		=	A()
 local a2		=	A()
 local result	=	a1 + a2
-</code></pre>
-				</div>
-			</section>
-			
-			<section id="new">
-				<h2>new</h2>
-				<p>
-					Creates a new class, supports options like multiple inheritance via '__includes'.
-				</p>
-				<ul class="meta">
-					<li><strong>Arguments :</strong></li>
-					<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>tDefinition</i> — Table defining the class (methods, __includes, etc.)</li>
+						</code></pre>
+					</div>
+				</section>
 				
-					<li><strong>Returns :</strong></li>
-					<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>tClass</i> — A new class instance</li>
+				<section id="new">
+					<h2>new</h2>
+					<p>
+						Creates a new class, supports options like multiple inheritance via '__includes'.
+					</p>
+					<ul class="meta">
+						<li><strong>Arguments :</strong></li>
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>tDefinition</i> — Table defining the class (methods, __includes, etc.)</li>
+					
+						<li><strong>Returns :</strong></li>
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>tClass</i> — A new class instance</li>
+					
+						<li><strong>Exceptions :</strong></li>
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>Throws if definition is invalid or causes a conflict</i></li>
+					</ul>
 				
-					<li><strong>Exceptions :</strong></li>
-					<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>Throws if definition is invalid or causes a conflict</i></li>
-				</ul>
-
-
-				<div class="code-block">
-					<button class="copy-btn">📋</button>
-					<pre><code>
+				
+					<div class="code-block">
+						<button class="copy-btn">📋</button>
+						<pre><code>
 local MyClass	=	Class:new{
 	init	=	function(self)
 		print("Hello world")
@@ -309,49 +292,49 @@ local MyClass	=	Class:new{
 }
 
 local obj	=	MyClass()
-</code></pre>
-				</div>
-			</section>
-			
-			<section id="registerClass">
-				<h2>registerClass</h2>
-				<p>
-					Registers a class with a name, prototype, and optional parent class.<br />
-					Useful for centralized registries.
-				</p>
-				<ul class="meta">
-					<li><strong>Arguments :</strong></li>
-					<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>sName</i> — The class type name</li>
-					<li>&nbsp;&nbsp;&nbsp;&nbsp;[2] : <i>tPrototype</i> — Table containing methods/fields</li>
-					<li>&nbsp;&nbsp;&nbsp;&nbsp;[3] : <i>tParent</i> — (Optional) Class to inherit from</li>
+						</code></pre>
+					</div>
+				</section>
 				
-					<li><strong>Returns :</strong></li>
-					<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>tClass</i> — Registered class with name and inheritance</li>
+				<section id="registerClass">
+					<h2>registerClass</h2>
+					<p>
+						Registers a class with a name, prototype, and optional parent class.<br />
+						Useful for centralized registries.
+					</p>
+					<ul class="meta">
+						<li><strong>Arguments :</strong></li>
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>sName</i> — The class type name</li>
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;[2] : <i>tPrototype</i> — Table containing methods/fields</li>
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;[3] : <i>tParent</i> — (Optional) Class to inherit from</li>
+					
+						<li><strong>Returns :</strong></li>
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>tClass</i> — Registered class with name and inheritance</li>
+					
+						<li><strong>Exceptions :</strong></li>
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>Throws if sName is not a string or prototype is invalid</i></li>
+					</ul>
 				
-					<li><strong>Exceptions :</strong></li>
-					<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>Throws if sName is not a string or prototype is invalid</i></li>
-				</ul>
-
-
-				<div class="code-block">
-					<button class="copy-btn">📋</button>
-					<pre><code>
+				
+					<div class="code-block">
+						<button class="copy-btn">📋</button>
+						<pre><code>
 local A	=	{	foo	=	function() end	}
 local B	=	{	bar	=	function() end	}
 
 local C	=	Class:registerClass("MyType", A, B)
 print(C.__type) -- MyType
-					</code></pre>
-				</div>
-				<hr />
-			</section>
-			
-			<section id="__includes">
-				<h2>__includes</h2>
-				<p><em>
-					Inheritance helper that allows a class to include methods and properties from other classes or tables.
-				</em></p>
-				<pre><code>
+						</code></pre>
+					</div>
+					<hr />
+				</section>
+				
+				<section id="__includes">
+					<h2>__includes</h2>
+					<p><em>
+						Inheritance helper that allows a class to include methods and properties from other classes or tables.
+					</em></p>
+					<pre><code>
 local A	=	Class{
     foo	=	function() print('foo') end
 }
@@ -361,29 +344,29 @@ B = Class{__includes = A}
 instance = B()
 instance:foo() -- prints 'foo'
 instance:bar() -- error: function not defined
-				</code></pre>
-			</section>
-			
-			<section id="__type">
-				<h2>__type</h2>
-				<p><em>
-					Defines the internal type string of an object, useful for type checking and debugging.
-				</em></p>
-				<pre><code>
+					</code></pre>
+				</section>
+				
+				<section id="__type">
+					<h2>__type</h2>
+					<p><em>
+						Defines the internal type string of an object, useful for type checking and debugging.
+					</em></p>
+					<pre><code>
 local MyClass = {}
 MyClass.__type = "MyClass"
 
 local obj = setmetatable({}, { __index = MyClass })
 print(obj.__type) -- Output: MyClass
-				</code></pre>
-			</section>
-			
-			<section id="_gc">
-				<h2>__gc</h2>
-				<p><em>
-					Called by Lua garbage collector to perform cleanup when an object is destroyed.
-				</em></p>
-				<pre><code>
+					</code></pre>
+				</section>
+				
+				<section id="_gc">
+					<h2>__gc</h2>
+					<p><em>
+						Called by Lua garbage collector to perform cleanup when an object is destroyed.
+					</em></p>
+					<pre><code>
 local MyClass = {}
 
 local mt = {
@@ -395,69 +378,70 @@ local mt = {
 local obj = setmetatable({}, mt)
 obj = nil
 collectgarbage() -- Triggers __gc and prints the message
-				</code></pre>
-			</section>
-			
-			<section id="license">
-			  <h2>License</h2>
-			  <p>
-			    This project is licensed under the 
-			    <a href="https://github.com/Gopmyc/Class/blob/main/LICENSE" target="_blank">MIT License</a>.
-			  </p>
-			</section>
-		</main>
-	</div>
+					</code></pre>
+				</section>
+				
+				<section id="license">
+				  <h2>License</h2>
+				  <p>
+				    This project is licensed under the 
+				    <a href="https://github.com/Gopmyc/Class/blob/main/LICENSE" target="_blank">MIT License</a>.
+				  </p>
+				</section>
+			</main>
+		</div>
 	
-	<script>
-		document.addEventListener('DOMContentLoaded', () => {
-			const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
-
-			dropdownToggles.forEach(toggle => {
-				toggle.addEventListener('click', e => {
-					e.preventDefault();
-					const submenu = toggle.nextElementSibling;
-				
-					document.querySelectorAll('.submenu.visible').forEach(open =>
-						open !== submenu ? open.classList.remove('visible') : null
-					);
-				
-					submenu.classList.toggle('visible');
-				});
-			});
-		});
-
-		document.querySelectorAll('.copy-btn').forEach(btn => {
-			btn.addEventListener('click', () => {
-				const code = btn.nextElementSibling.innerText;
+		<script>
+			document.addEventListener('DOMContentLoaded', () => {
+				const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
 			
-				navigator.clipboard.writeText(code).then(() => {
-					btn.classList.add('copied');
-					btn.innerText = '✅';
-				
-					setTimeout(() => {
-						btn.classList.remove('copied');
-						btn.innerText = '📋';
-					}, 1500);
+				dropdownToggles.forEach(toggle => {
+					toggle.addEventListener('click', e => {
+						e.preventDefault();
+						const submenu = toggle.nextElementSibling;
+					
+						document.querySelectorAll('.submenu.visible').forEach(open =>
+							open !== submenu ? open.classList.remove('visible') : null
+						);
+					
+						submenu.classList.toggle('visible');
+					});
 				});
 			});
-		});
-
-		document.querySelectorAll('pre code').forEach(block => {
-			const html = block.innerHTML
-				.replace(/\blocal\b/g, '<span class="keyword">local</span>')
-				.replace(/\bfunction\b/g, '<span class="keyword">function</span>')
-				.replace(/--.*/g, '<span class="comment">$&</span>');
 		
-			block.innerHTML = html;
-		});
-
-		document.querySelectorAll('.sidebar a').forEach(link => {
-			link.addEventListener('click', () => {
-				document.querySelectorAll('.sidebar a').forEach(l =>
-					l.classList.remove('active')
-				);
-				link.classList.add('active');
+			document.querySelectorAll('.copy-btn').forEach(btn => {
+				btn.addEventListener('click', () => {
+					const code = btn.nextElementSibling.innerText;
+				
+					navigator.clipboard.writeText(code).then(() => {
+						btn.classList.add('copied');
+						btn.innerText = '✅';
+					
+						setTimeout(() => {
+							btn.classList.remove('copied');
+							btn.innerText = '📋';
+						}, 1500);
+					});
+				});
 			});
-		});
-	</script>
+		
+			document.querySelectorAll('pre code').forEach(block => {
+				const html = block.innerHTML
+					.replace(/\blocal\b/g, '<span class="keyword">local</span>')
+					.replace(/\bfunction\b/g, '<span class="keyword">function</span>')
+					.replace(/--.*/g, '<span class="comment">$&</span>');
+			
+				block.innerHTML = html;
+			});
+		
+			document.querySelectorAll('.sidebar a').forEach(link => {
+				link.addEventListener('click', () => {
+					document.querySelectorAll('.sidebar a').forEach(l =>
+						l.classList.remove('active')
+					);
+					link.classList.add('active');
+				});
+			});
+		</script>
+	</body>
 </html>
