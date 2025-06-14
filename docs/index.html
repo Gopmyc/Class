@@ -407,4 +407,57 @@ collectgarbage() -- Triggers __gc and prints the message
 			</section>
 		</main>
 	</div>
+	
+	<script>
+		document.addEventListener('DOMContentLoaded', () => {
+			const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+
+			dropdownToggles.forEach(toggle => {
+				toggle.addEventListener('click', e => {
+					e.preventDefault();
+					const submenu = toggle.nextElementSibling;
+				
+					document.querySelectorAll('.submenu.visible').forEach(open =>
+						open !== submenu ? open.classList.remove('visible') : null
+					);
+				
+					submenu.classList.toggle('visible');
+				});
+			});
+		});
+
+		document.querySelectorAll('.copy-btn').forEach(btn => {
+			btn.addEventListener('click', () => {
+				const code = btn.nextElementSibling.innerText;
+			
+				navigator.clipboard.writeText(code).then(() => {
+					btn.classList.add('copied');
+					btn.innerText = '✅';
+				
+					setTimeout(() => {
+						btn.classList.remove('copied');
+						btn.innerText = '📋';
+					}, 1500);
+				});
+			});
+		});
+
+		document.querySelectorAll('pre code').forEach(block => {
+			const html = block.innerHTML
+				.replace(/\blocal\b/g, '<span class="keyword">local</span>')
+				.replace(/\bfunction\b/g, '<span class="keyword">function</span>')
+				.replace(/--.*/g, '<span class="comment">$&</span>');
+		
+			block.innerHTML = html;
+		});
+
+		document.querySelectorAll('.sidebar a').forEach(link => {
+			link.addEventListener('click', () => {
+				document.querySelectorAll('.sidebar a').forEach(l =>
+					l.classList.remove('active')
+				);
+				link.classList.add('active');
+			});
+		});
+	</script>
 </html>
