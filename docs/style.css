@@ -232,3 +232,19 @@ hr						{
 	margin-bottom		:	6px;
 	display				:	inline-block;
 }
+
+@media (max-width: 768px)	{
+	.container	{
+		flex-direction	:	column;
+	}
+
+	.sidebar	{
+		width			:	100%;
+		height			:	auto;
+		position		:	relative;
+	}
+
+	.content	{
+		padding			:	20px;
+	}
+}
