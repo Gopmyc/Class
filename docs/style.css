@@ -10,3 +10,13 @@ body					{
 	display					:	flex;
 	width					:	100%;
 }
+
+.sidebar				{
+	width					:	250px;
+	background-color		:	#1e1e1e;
+	padding					:	20px;
+	height					:	100vh;
+	position				:	sticky;
+	top						:	0;
+	overflow-y				:	auto;
+}
