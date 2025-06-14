@@ -108,7 +108,7 @@ You’ll need Lua installed:
 
 ```lua
 local Class	=	require("class")
-lcoal A		=	Class{
+local A		=	Class{
     foo	=	function()
 		print('foo')
 	end,
