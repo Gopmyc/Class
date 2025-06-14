@@ -378,6 +378,26 @@ print(obj.__type) -- Output: MyClass
 				</code></pre>
 			</section>
 			
+			<section id="_gc">
+				<h2>__gc</h2>
+				<p><em>
+					Called by Lua garbage collector to perform cleanup when an object is destroyed.
+				</em></p>
+				<pre><code>
+local MyClass = {}
+
+local mt = {
+	__gc = function(obj)
+		print("Object is being garbage collected")
+	end
+}
+
+local obj = setmetatable({}, mt)
+obj = nil
+collectgarbage() -- Triggers __gc and prints the message
+				</code></pre>
+			</section>
+			
 		</main>
 	</div>
 </html>
