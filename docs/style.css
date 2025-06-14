@@ -162,3 +162,45 @@ pre code span.comment	{
 	position				:	relative;
 	animation				:	fadeInUp 0.4s ease;
 }
+
+@keyframes fadeInUp		{
+	from	{
+		opacity				:	0;
+		transform			:	translateY(10px);
+	}
+	to		{
+		opacity				:	1;
+		transform			:	translateY(0);
+	}
+}
+
+hr						{
+	border					:	none;
+	border-top				:	2px solid #9b5de5;
+	margin					:	2em 0;
+	opacity					:	0.3;
+}
+
+.copy-btn				{
+	position				:	absolute;
+	top						:	8px;
+	right					:	8px;
+	background				:	#333;
+	border					:	none;
+	color					:	#ccc;
+	padding					:	4px 8px;
+	cursor					:	pointer;
+	font-size				:	14px;
+	border-radius			:	4px;
+	transition				:	background-color 0.3s ease, color 0.3s ease;
+	user-select				:	none;
+}
+
+.copy-btn:hover			{
+	background			:	#1e1e1e;
+	color				:	#9b5de5;
+}
+
+.copy-btn.copied		{
+	color				:	#4caf50;
+}
