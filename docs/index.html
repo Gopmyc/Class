@@ -364,6 +364,20 @@ instance:bar() -- error: function not defined
 				</code></pre>
 			</section>
 			
+			<section id="__type">
+				<h2>__type</h2>
+				<p><em>
+					Defines the internal type string of an object, useful for type checking and debugging.
+				</em></p>
+				<pre><code>
+local MyClass = {}
+MyClass.__type = "MyClass"
+
+local obj = setmetatable({}, { __index = MyClass })
+print(obj.__type) -- Output: MyClass
+				</code></pre>
+			</section>
+			
 		</main>
 	</div>
 </html>
