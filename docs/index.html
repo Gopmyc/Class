@@ -213,6 +213,40 @@ print(obj:DebugInfos())
 				</div>
 			</section>
 			
+			<section id="accessor">
+				<h2>accessor</h2>
+				<p>
+					Generates getter and setter functions for a private member.
+				</p>
+				<ul class="meta">
+					<li><strong>Arguments :</strong></li>
+					<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>tSelf</i> — The instance to add accessors to</li>
+					<li>&nbsp;&nbsp;&nbsp;&nbsp;[2] : <i>sInternal</i> — Name of the private key</li>
+					<li>&nbsp;&nbsp;&nbsp;&nbsp;[3] : <i>sExternal</i> — Public-facing name (used in getter/setter)</li>
+					<li>&nbsp;&nbsp;&nbsp;&nbsp;[4] : <i>vDefault</i> — (Optional) Default value to assign</li>
+				
+					<li><strong>Returns :</strong></li>
+					<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>nil</i></li>
+				
+					<li><strong>Exceptions :</strong></li>
+					<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>Throws if parameters are missing or invalid</i></li>
+				</ul>
+
+				<div class="code-block">
+					<button class="copy-btn">📋</button>
+					<pre><code>
+local A		=	Class{
+	init	=	function(self)
+		Class:accessor(self, "sName", "Name", "John")
+	end
+}
+local a		=	A()
+a:SetName("Doe")
+print(a:GetName()) -- Doe
+					</code></pre>
+				</div>
+			</section>
+			
 		</main>
 	</div>
 </html>
