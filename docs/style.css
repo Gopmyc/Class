@@ -115,3 +115,50 @@ h2::after				{
 	color					:	#9b5de5;
 	font-size				:	0.8em;
 }
+
+pre						{
+	background-color		:	#222;
+	padding					:	10px;
+	overflow-x				:	auto;
+	border-left				:	4px solid #9b5de5;
+	margin					:	0;
+}
+
+code					{
+	font-family				:	monospace;
+	color					:	#fff;
+	display					:	block;
+}
+
+pre code				{
+	white-space				:	pre-wrap;
+}
+
+pre code::selection		{
+	background				:	#9b5de5;
+	color					:	#000;
+}
+
+pre code				{
+	font-family				:	'Fira Code', monospace;
+}
+
+pre code span.keyword	{
+	color					:	#f78c6c;
+}
+pre code span.func		{
+	color					:	#82aaff;
+}
+pre code span.comment	{
+	color					:	#6a9955;
+	font-style				:	italic;
+}
+
+.code-block				{
+	padding					:	12px;
+	border-radius			:	6px;
+	border					:	1px solid #333;
+	margin-top				:	10px;
+	position				:	relative;
+	animation				:	fadeInUp 0.4s ease;
+}
