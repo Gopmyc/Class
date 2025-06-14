@@ -247,6 +247,41 @@ print(a:GetName()) -- Doe
 				</div>
 			</section>
 			
+			<section id="overloadOperators">
+				<h2>overloadOperators</h2>
+				<p>
+					Overloads the operator to merge two instances of the same type.
+				</p>
+				<ul class="meta">
+					<li><strong>Arguments :</strong></li>
+					<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>tClass</i> — The class to extend with operator overloading</li>
+				
+					<li><strong>Returns :</strong></li>
+					<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>nil</i></li>
+				
+					<li><strong>Exceptions :</strong></li>
+					<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>Throws if tClass is not a valid class</i></li>
+				</ul>
+
+
+				<div class="code-block">
+					<button class="copy-btn">📋</button>
+					<pre><code>
+local A	=	Class{
+	init	=	function(self)
+		self.__private.value	=	42
+	end
+}
+
+Class:overloadOperators(A)
+
+local a1		=	A()
+local a2		=	A()
+local result	=	a1 + a2
+</code></pre>
+				</div>
+			</section>
+			
 		</main>
 	</div>
 </html>
