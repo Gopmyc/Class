@@ -155,6 +155,36 @@ A.say() -- Hello
 				</div>
 			</section>
 			
+			<section id="clone">
+				<h2>clone</h2>
+				<p>
+					Creates a deep copy of a class or instance, preserving its metatable.
+				</p>
+				<ul class="meta">
+					<li><strong>Arguments :</strong></li>
+					<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>tObject</i> — The class or instance to clone</li>
+				
+					<li><strong>Returns :</strong></li>
+					<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>tCloned</i> — A deep copy of the input</li>
+				
+					<li><strong>Exceptions :</strong></li>
+					<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>Throws if the object cannot be cloned</i></li>
+				</ul>
+
+
+				<div class="code-block">
+					<button class="copy-btn">📋</button>
+					<pre><code>
+local A	=	Class{
+	foo	=	"bar"
+}
+
+local B	=	Class:clone(A)
+print(B.foo) -- bar
+					</code></pre>
+				</div>
+			</section>
+			
 		</main>
 	</div>
 </html>
