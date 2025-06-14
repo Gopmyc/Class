@@ -78,3 +78,12 @@ body					{
 .submenu li				{
 	padding-left			:	20px;
 }
+
+.content				{
+	flex					:	1;
+	padding					:	40px;
+	max-width				:	900px;
+	background				:	#1a1a1a;
+	box-shadow				:	0 0 20px rgba(155, 93, 229, 0.1);
+	border-radius			:	16px;
+}
