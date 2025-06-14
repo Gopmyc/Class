@@ -282,6 +282,37 @@ local result	=	a1 + a2
 				</div>
 			</section>
 			
+			<section id="new">
+				<h2>new</h2>
+				<p>
+					Creates a new class, supports options like multiple inheritance via '__includes'.
+				</p>
+				<ul class="meta">
+					<li><strong>Arguments :</strong></li>
+					<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>tDefinition</i> — Table defining the class (methods, __includes, etc.)</li>
+				
+					<li><strong>Returns :</strong></li>
+					<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>tClass</i> — A new class instance</li>
+				
+					<li><strong>Exceptions :</strong></li>
+					<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>Throws if definition is invalid or causes a conflict</i></li>
+				</ul>
+
+
+				<div class="code-block">
+					<button class="copy-btn">📋</button>
+					<pre><code>
+local MyClass	=	Class:new{
+	init	=	function(self)
+		print("Hello world")
+	end
+}
+
+local obj	=	MyClass()
+</code></pre>
+				</div>
+			</section>
+			
 		</main>
 	</div>
 </html>
