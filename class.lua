@@ -37,10 +37,6 @@ return setmetatable(
 	include				=	function(self, tClass, tOther) return self:includeHelper(tClass, tOther, {}) end,
 	clone				=	function(self, tOther) return setmetatable(self:include({}, tOther), assert(getmetatable(tOther), "Cannot clone an object without a metatable.")) end,
 
-	super				=	function(self, tSelf, tMethod, ...)
-        if tSelf.__super and tSelf.__super[tMethod] then return tSelf.__super[tMethod](tSelf, ...) else error("Method " .. tMethod .. " not found in parent class.") end
-    end,
-
 	overloadOperators	=	function(self, tClass)
         assert(type(tClass) == "table", "[CLASS] ...")
         tClass.__add	=	function(tA, tB)
@@ -62,7 +58,6 @@ return setmetatable(
         for _, tOther in ipairs(tInc) do if type(tOther) == "string" then tOther = _G[tOther] end; self:include(tClass, tOther) end
 
         tClass.__index			=	tClass
-        tClass.__super			=	tClass.__super or nil
         tClass.__type			=	tClass.__type or "Class"
         tClass.__privateMethods	=	tClass.__privateMethods or {}
 
@@ -95,7 +90,6 @@ return setmetatable(
 
 	registerClass		=	function(self, tName, tPrototype, tParent)
         local tCls	=	self:new{__includes = {tPrototype, tParent}}
-        if tParent then tCls.__super = tParent end
         tCls.__type	=	tName
         self:overloadOperators(tCls)
         return tCls
