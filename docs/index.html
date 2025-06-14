@@ -92,6 +92,37 @@ local Class	=	require("class")
 				</div>
 			</section>
 			
+			<section id="init">
+				<h2>init</h2>
+				<p>
+					Initialization function automatically called when creating an object via 'Class()'.<br />
+					Defined inside the table passed to the constructor.
+				</p>
+				<ul class="meta">
+					<li><strong>Arguments :</strong></li>
+					<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>tSelf</i> — The instance being initialized</li>
+					<li>&nbsp;&nbsp;&nbsp;&nbsp;[2] : <i>...</i> — Additional arguments passed during instantiation</li>
+				
+					<li><strong>Returns :</strong></li>
+					<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>nil</i></li>
+				
+					<li><strong>Exceptions :</strong></li>
+					<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>Throws an error wrapped via xpcall if init fails</i></li>
+				</ul>
+
+				<div class="code-block">
+					<button class="copy-btn">📋</button>
+					<pre><code>
+local A		=	Class{
+	init	=	function(self)
+		print("Object initialized!")
+	end,
+}
+local obj	=	A() -- Prints "Object initialized!"
+					</code></pre>
+				</div>
+			</section>
+			
 		</main>
 	</div>
 </html>
