@@ -60,3 +60,21 @@ body					{
 .dropdown-toggle:hover	{
 	color					:	#fff;
 }
+
+.submenu				{
+	list-style				:	none;
+	padding-left			:	20px;
+	max-height				:	0;
+	opacity					:	0;
+	overflow				:	hidden;
+	transition				:	max-height 0.4s ease, opacity 0.3s ease;
+}
+
+.submenu.visible		{
+	max-height				:	500px;
+	opacity					:	1;
+}
+
+.submenu li				{
+	padding-left			:	20px;
+}
