@@ -81,10 +81,14 @@ return setmetatable(
             end,
             __gc	=	function(tO) if tO.destroy then pcall(function() tO:destroy() end) else tO = nil end end,
             __index	=	function(tSelf, tKey)
-                if tKey == "__privateMethods" then return nil end
-                if tSelf.__privateMethods[tKey] then return function() return tSelf.__privateMethods[tKey](tSelf) end end
-                return rawget(tSelf, tKey)
-            end,
+    			if tKey == "__privateMethods" then return nil end
+    			if tSelf.__privateMethods[tKey] then
+    			    return function(_, ...)
+    			        return tSelf.__privateMethods[tKey](tSelf, ...)
+    			    end
+    			end
+    			return rawget(tSelf, tKey)
+			end,
         })
     end,
 
