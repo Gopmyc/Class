@@ -346,6 +346,24 @@ print(C.__type) -- MyType
 				<hr />
 			</section>
 			
+			<section id="__includes">
+				<h2>__includes</h2>
+				<p><em>
+					Inheritance helper that allows a class to include methods and properties from other classes or tables.
+				</em></p>
+				<pre><code>
+local A	=	Class{
+    foo	=	function() print('foo') end
+}
+
+-- single inheritance
+B = Class{__includes = A}
+instance = B()
+instance:foo() -- prints 'foo'
+instance:bar() -- error: function not defined
+				</code></pre>
+			</section>
+			
 		</main>
 	</div>
 </html>
