@@ -313,6 +313,39 @@ local obj	=	MyClass()
 				</div>
 			</section>
 			
+			<section id="registerClass">
+				<h2>registerClass</h2>
+				<p>
+					Registers a class with a name, prototype, and optional parent class.<br />
+					Useful for centralized registries.
+				</p>
+				<ul class="meta">
+					<li><strong>Arguments :</strong></li>
+					<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>sName</i> — The class type name</li>
+					<li>&nbsp;&nbsp;&nbsp;&nbsp;[2] : <i>tPrototype</i> — Table containing methods/fields</li>
+					<li>&nbsp;&nbsp;&nbsp;&nbsp;[3] : <i>tParent</i> — (Optional) Class to inherit from</li>
+				
+					<li><strong>Returns :</strong></li>
+					<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>tClass</i> — Registered class with name and inheritance</li>
+				
+					<li><strong>Exceptions :</strong></li>
+					<li>&nbsp;&nbsp;&nbsp;&nbsp;[1] : <i>Throws if sName is not a string or prototype is invalid</i></li>
+				</ul>
+
+
+				<div class="code-block">
+					<button class="copy-btn">📋</button>
+					<pre><code>
+local A	=	{	foo	=	function() end	}
+local B	=	{	bar	=	function() end	}
+
+local C	=	Class:registerClass("MyType", A, B)
+print(C.__type) -- MyType
+					</code></pre>
+				</div>
+				<hr />
+			</section>
+			
 		</main>
 	</div>
 </html>
